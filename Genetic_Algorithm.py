@@ -1,5 +1,8 @@
 from Run_Game import *
-from random import choice, randint
+from random import randint
+import matplotlib.pyplot as plt
+
+plt.style.use('dark_background')
 
 def cal_pop_fitness(pop, generation):
     # calculating the fitness value by playing a game with the given weights in chromosome
@@ -7,7 +10,9 @@ def cal_pop_fitness(pop, generation):
     for i in range(pop.shape[0]):
         fit = run_game_with_ML(display,clock,pop[i], generation)
         print('fitness value of chromosome '+ str(i) +' :  ', fit)
-        fitness.append(fit)
+
+        fitness.append(fit) 
+        
     return np.array(fitness)
 
 def select_mating_pool(pop, fitness, num_parents):

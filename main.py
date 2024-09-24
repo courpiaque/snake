@@ -16,13 +16,29 @@ pop_size = (sol_per_pop,num_weights)
 new_population = np.random.choice(np.arange(-1,1,step=0.01),size=pop_size,replace=True)
 
 num_generations = 100
+with_plot = True
+show_plot_step = 20
+
+all_fitness = []
 
 num_parents_mating = 12
 for generation in range(num_generations):
-    print('############## GENERATION ' + str(generation + 1) + ' ###############' )
+    gen_idx = generation + 1;
+    print('############## GENERATION ' + str(gen_idx) + ' ###############' )
+    
     # Measuring the fitness of each chromosome in the population.
-    fitness = cal_pop_fitness(new_population, generation + 1)
-    print('#######  fittest chromosome in gneneration ' + str(generation) +' is having fitness value:  ', np.max(fitness))
+    fitness = cal_pop_fitness(new_population, gen_idx)
+    print('#######  fittest chromosome in gneneration ' + str(gen_idx) +' is having fitness value:  ', np.max(fitness))
+
+    for x in fitness:
+        all_fitness.append(int(x))
+
+    # Display plot
+    if (with_plot and (gen_idx % show_plot_step) == 0):
+        fig = plt.figure()
+        plt.plot(np.arange(0, len(all_fitness)), all_fitness)
+        plt.show()
+
     # Selecting the best parents in the population for mating.
     parents = select_mating_pool(new_population, fitness, num_parents_mating)
 
@@ -35,3 +51,5 @@ for generation in range(num_generations):
     # Creating the new population based on the parents and offspring.
     new_population[0:parents.shape[0], :] = parents
     new_population[parents.shape[0]:, :] = offspring_mutation
+
+

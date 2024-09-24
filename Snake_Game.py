@@ -1,8 +1,6 @@
 import random
 import random
-import time
 import math
-from tqdm import tqdm
 import numpy as np
 import pygame
 
