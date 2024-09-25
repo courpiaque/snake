@@ -19,7 +19,7 @@ num_generations = 100
 with_plot = True
 show_plot_step = 20
 
-all_fitness = []
+highlights = []
 
 num_parents_mating = 12
 for generation in range(num_generations):
@@ -30,13 +30,12 @@ for generation in range(num_generations):
     fitness = cal_pop_fitness(new_population, gen_idx)
     print('#######  fittest chromosome in gneneration ' + str(gen_idx) +' is having fitness value:  ', np.max(fitness))
 
-    for x in fitness:
-        all_fitness.append(int(x))
+    highlights.append(np.max(int(fitness)))
 
     # Display plot
-    if (with_plot and (gen_idx % show_plot_step) == 0):
+    if (with_plot and gen_idx % show_plot_step == 0):
         fig = plt.figure()
-        plt.plot(np.arange(0, len(all_fitness)), all_fitness)
+        plt.plot(np.arange(1, len(highlights) + 1), highlights)
         plt.show()
 
     # Selecting the best parents in the population for mating.

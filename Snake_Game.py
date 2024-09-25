@@ -169,7 +169,7 @@ def play_game(snake_start, snake_position, apple_position, button_direction, sco
                                                                button_direction, score)
         pygame.display.set_caption("SCORE: " + str(score) + " GENERATION: " + str(generation))
         pygame.display.update()
-        clock.tick(110 - generation)
+        clock.tick(100)
 
         return snake_position, apple_position, score
 
@@ -182,8 +182,8 @@ DOWN ->button_direction = 2
 UP -> button_direction = 3
 '''
 
-display_width = 500
-display_height = 500
+display_width = 300
+display_height = 300
 green = (0,255,0)
 red = (255,0,0)
 black = (0,0,0)
