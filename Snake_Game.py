@@ -16,7 +16,7 @@ def display_apple(apple_position, display):
 def starting_positions():
     snake_start = [100, 100]
     snake_position = [[100, 100], [90, 100], [80, 100]]
-    apple_position = [random.randrange(1, display_width / 10) * 10, random.randrange(1, display_height / 10) * 10]
+    apple_position = [random.randrange(1, int(display_width / 10)) * 10, random.randrange(1, int(display_height / 10)) * 10]
     score = 0
 
     return snake_start, snake_position, apple_position, score
@@ -48,7 +48,7 @@ def generate_snake(snake_start, snake_position, apple_position, button_direction
 
 
 def collision_with_apple(apple_position, score):
-    apple_position = [random.randrange(1, display_width / 10) * 10, random.randrange(1, display_height / 10) * 10]
+    apple_position = [random.randrange(1, int(display_width / 10)) * 10, random.randrange(1, int(display_height / 10)) * 10]
     score += 1
     return apple_position, score
 
