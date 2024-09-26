@@ -1,7 +1,7 @@
 from Snake_Game import *
 from Feed_Forward_Neural_Network import *
 
-def run_game_with_ML(display, clock, weights, generation):
+def run_game_with_ML(display, clock, weights, generation, speed):
     max_score = 0
     avg_score = 0
     test_games = 1
@@ -50,7 +50,7 @@ def run_game_with_ML(display, clock, weights, generation):
                 score1 += 0
 
             snake_position, apple_position, score = play_game(snake_start, snake_position, apple_position,
-                                                              button_direction, score, display, clock, generation)
+                                                              button_direction, score, display, clock, generation, speed)
 
             if score > max_score:
                 max_score = score

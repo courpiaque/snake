@@ -16,24 +16,26 @@ pop_size = (sol_per_pop,num_weights)
 new_population = np.random.choice(np.arange(-1,1,step=0.01),size=pop_size,replace=True)
 
 num_generations = 100
-with_plot = True
-show_plot_step = 20
-
 highlights = []
 
 num_parents_mating = 12
 for generation in range(num_generations):
     gen_idx = generation + 1;
-    print('############## GENERATION ' + str(gen_idx) + ' ###############' )
     
+    # Slow down on the last iteration to see actual game
+    speed = 10 if gen_idx > num_generations else 1000;
+    
+    print('############## GENERATION ' + str(gen_idx) + ' ###############' )
     # Measuring the fitness of each chromosome in the population.
-    fitness = cal_pop_fitness(new_population, gen_idx)
-    print('#######  fittest chromosome in gneneration ' + str(gen_idx) +' is having fitness value:  ', np.max(fitness))
+    fitness = cal_pop_fitness(new_population, gen_idx, speed)
+    fitness_highest = np.max(fitness)
+    print('#######  fittest chromosome in gneneration ' + str(gen_idx) +' is having fitness value:  ', fitness_highest)
+    
 
-    highlights.append(np.max(int(fitness)))
+    highlights.append(fitness_highest)
 
-    # Display plot
-    if (with_plot and gen_idx % show_plot_step == 0):
+    # Display highlights before last iteration
+    if (gen_idx == num_generations):
         fig = plt.figure()
         plt.plot(np.arange(1, len(highlights) + 1), highlights)
         plt.show()

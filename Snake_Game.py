@@ -154,7 +154,7 @@ def angle_with_apple(snake_position, apple_position):
     return angle, snake_direction_vector, apple_direction_vector_normalized, snake_direction_vector_normalized
 
 
-def play_game(snake_start, snake_position, apple_position, button_direction, score, display, clock, generation):
+def play_game(snake_start, snake_position, apple_position, button_direction, score, display, clock, generation, speed):
     crashed = False
     while crashed is not True:
         for event in pygame.event.get():
@@ -169,7 +169,7 @@ def play_game(snake_start, snake_position, apple_position, button_direction, sco
                                                                button_direction, score)
         pygame.display.set_caption("SCORE: " + str(score) + " GENERATION: " + str(generation))
         pygame.display.update()
-        clock.tick(100)
+        clock.tick(speed)
 
         return snake_position, apple_position, score
 
@@ -182,8 +182,8 @@ DOWN ->button_direction = 2
 UP -> button_direction = 3
 '''
 
-display_width = 300
-display_height = 300
+display_width = 500
+display_height = 500
 green = (0,255,0)
 red = (255,0,0)
 black = (0,0,0)

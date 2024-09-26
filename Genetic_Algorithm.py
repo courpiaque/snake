@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 
 plt.style.use('dark_background')
 
-def cal_pop_fitness(pop, generation):
+def cal_pop_fitness(pop, generation, speed):
     # calculating the fitness value by playing a game with the given weights in chromosome
     fitness = []
     for i in range(pop.shape[0]):
-        fit = run_game_with_ML(display,clock,pop[i], generation)
+        fit = run_game_with_ML(display,clock,pop[i], generation, speed)
         print('fitness value of chromosome '+ str(i) +' :  ', fit)
 
         fitness.append(fit) 
